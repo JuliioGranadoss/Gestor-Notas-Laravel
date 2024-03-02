@@ -3,12 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Note;
 
 class NoteController extends Controller
 {
     public function index()
     {
-        return view('notes.index');
+        $user = auth()->user();
+
+        if ($user) {
+            $notes = $user->notes;
+            
+            return view('notesIndex', ["notes" => $notes]);
+            
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function show(string $id)
+    {
+        $note = Note::find($id);
+
+        return view('notesShow', ["note" => $note ]);
     }
 
     public function create()

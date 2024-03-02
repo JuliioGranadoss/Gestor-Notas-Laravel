@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text("content");
             $table->date("date");
             $table->string("image")->nullable();
-            $table->foreign("idUsu")->references("idUsu")->on("users")->onDelete("cascade"); //Hace referencia a la tabla de usuarios
-            $table->foreign("idCat")->references("idCat")->on("category"); //Hace referencia a la tabla de categorías
+            $table->foreign("idUsu")->references("idUsu")->on("users")->onDelete("cascade"); 
+            $table->foreign("idCat")->references("idCat")->on("category"); 
             $table->timestamps();
         });
     }

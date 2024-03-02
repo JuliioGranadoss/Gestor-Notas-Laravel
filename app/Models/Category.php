@@ -17,4 +17,8 @@ class Category extends Model
         'nameCat',
         'descriptionCat',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'idUsu');
+    }
 }

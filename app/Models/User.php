@@ -27,9 +27,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function notes(){
-        return $this->hasMany(Note::class, 'idUsu')->get();
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function categories(){
+        return $this->hasMany(Category::class, 'idUsu');
+    }
+
+    public function notes(){
+        return $this->hasMany(Note::class, 'idUsu');
+    }
 }

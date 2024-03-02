@@ -17,6 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
+            'idUsu' => \App\Models\User::factory(),
             'nameCat' => $this->faker->word,
             'descriptionCat' => $this->faker->sentence,
         ];
