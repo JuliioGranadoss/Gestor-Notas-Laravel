@@ -1,3 +1,4 @@
+# Este proyecto está realizado por: Julio Granados Durán
 # NotaCraft
 
 NotaCraft es un gestor de notas desarrollado en Laravel 10. Esta aplicación web te permite crear, editar y organizar tus notas de manera eficiente.
@@ -24,7 +25,7 @@ Sigue estos pasos para instalar y ejecutar NotaCraft en tu entorno local:
 
 1. Clona el repositorio desde GitHub:
 
-git clone https://github.com/tu_usuario/notacraft.git
+git clone https://github.com/JuliioGranadoss/Gestor-Notas-Laravel
 
 2. Instala las dependencias de PHP usando Composer:
 
