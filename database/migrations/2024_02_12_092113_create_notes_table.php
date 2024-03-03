@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id("idNot");
-            $table->unsignedBigInteger('idUsu') ;
-            $table->unsignedBigInteger('idCat') ;
+            $table->unsignedBigInteger('idUsu');
+            $table->unsignedBigInteger('idCat')->default(1);
             $table->string("title");
             $table->text("content");
             $table->date("date");

@@ -35,11 +35,11 @@ Route::middleware('auth')->group(function () {
 
     // Rutas para notas
     Route::get('/notes.index', [NoteController::class, 'index'])->name('notes.index');
-    Route::get('/notes/{note}', [NoteController::class, 'show'])->name('notes.show');
+    Route::get('/notes/show', [NoteController::class, 'show'])->name('notes.show');
     Route::get('/notes/create', [NoteController::class, 'create'])->name('notes.create');
     Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
     Route::get('/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit');
-    Route::patch('/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
+    Route::post('/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
     Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
 
     // Rutas para categorías

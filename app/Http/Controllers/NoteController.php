@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Note;
+use Illuminate\Support\Carbon;
 
 class NoteController extends Controller
 {
@@ -30,11 +31,14 @@ class NoteController extends Controller
 
     public function create()
     {
-        return view('notes.create');
+        return view('notes.notesCreate');
     }
 
     public function store(Request $request)
     {
+        date_default_timezone_set('Europe/Madrid');
+        $date = Carbon::now()->format("Y-m-d");
+
         $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -43,15 +47,17 @@ class NoteController extends Controller
         $note = new Note();
         $note->title = $request->title;
         $note->content = $request->content;
-        $note->user_id = auth()->id();
+        $note->date = $date;
+        $note->idUsu = auth()->id();
         $note->save();
 
         return redirect()->route('notes.index');
     }
 
-    public function edit(Note $note)
+    public function edit(int $id)
     {
-        return view('notes.edit', compact('note'));
+        $note = Note::find($id);
+        return view('notes.notesEdit', ["note" => $note]);
     }
 
     public function update(Request $request, Note $note)

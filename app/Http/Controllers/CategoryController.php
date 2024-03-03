@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->name = $request->name;
-        $category->user_id = auth()->id();
+        $category->idUsu = auth()->id();
         $category->save();
 
         return redirect()->route('categories.index');
