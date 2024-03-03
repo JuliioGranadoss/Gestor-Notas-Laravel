@@ -44,3 +44,5 @@ php artisan migrate --seed
 6. Inicia el servidor de desarrollo:
 
 php artisan serve
+
+## En el repositorio, hay un video en el que se explica brevemente la aplicación.
