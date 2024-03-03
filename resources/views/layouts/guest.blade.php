@@ -65,12 +65,12 @@
                         </x-nav-link>
                     @else
                         <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                            {{ __('Log in') }}
+                            {{ __('Iniciar Sesión') }}
                         </x-nav-link>
 
                         @if (Route::has('register'))
                             <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                                {{ __('Register') }}
+                                {{ __('Registro') }}
                             </x-nav-link>
                         @endif
                     @endauth

@@ -21,7 +21,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                <x-input-label for="password" :value="__('Contraseña')" />
 
                 <x-text-input id="password" class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 focus:border-indigo-300 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-200 dark:focus:ring-indigo-600 focus:ring-opacity-50" type="password" name="password" required autocomplete="current-password" />
 
@@ -30,7 +30,7 @@
 
             <div class="flex items-center justify-center mt-4">
                 <x-primary-button>
-                    {{ __('Log in') }}
+                    {{ __('Iniciar Sesión') }}
                 </x-primary-button>
             </div>
         </form>

@@ -13,14 +13,14 @@
                         @csrf
                         <div class="mb-4">
                             <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Título:</label>
-                            <input type="text" name="title" id="title" class="form-input mt-1 block w-full" />
+                            <input type="text" name="title" id="title" class="form-input rounded-md shadow-sm mt-1 block w-full" style="color: black;" />
                         </div>
                         <div class="mb-4">
                             <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contenido:</label>
-                            <textarea name="content" id="content" rows="4" class="form-textarea mt-1 block w-full"></textarea>
+                            <textarea name="content" id="content" rows="4" class="form-input rounded-md shadow-sm mt-1 block w-full" style="color: black;" /></textarea>
                         </div>
                         <div class="flex items-center justify-end">
-                            <button type="submit" class="btn btn-primary">Crear Nota</button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear Nota</button>
                         </div>
                     </form>
                 </div>

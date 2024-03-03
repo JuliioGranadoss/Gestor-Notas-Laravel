@@ -18,17 +18,17 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('categories.create');
+        return view('categories.categoriesCreate');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'nameCat' => 'required',
         ]);
 
         $category = new Category();
-        $category->name = $request->name;
+        $category->nameCat = $request->nameCat;
         $category->idUsu = auth()->id();
         $category->save();
 
@@ -37,16 +37,16 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        return view('categories.categoriesEdit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required',
+            'nameCat' => 'required',
         ]);
 
-        $category->name = $request->name;
+        $category->nameCat = $request->nameCat;
         $category->save();
 
         return redirect()->route('categories.index');
