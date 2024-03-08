@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100" style="background-color: #646464">
                     <a href="/notes/create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Crear Nota</a><br><br>
                     @foreach($notes as $note)
                         <div class="mb-4">
@@ -18,24 +18,41 @@
                             <p>
                                 {{ $note->content }}
                             </p>
-                            <br>
+                            <p>
+                                Categoría: @foreach( $note->category as $categoria )
+                                {{ $categoria->nameCat }}
+                                @endforeach 
+                            </p>
                             <p>
                                 Fecha de creación: {{ $note->created_at->format('d-m-Y H:i:s') }}
                             </p>
-                            <br><br>
+                            <br>
                             <a href="/notes/{{$note->idNot}}/edit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Editar</a>
                             <form action="{{ route('notes.destroy', $note) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class= "bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-4 rounded" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
                             </form>
+                            <br><br>
+                            <div>
+                                @foreach(auth()->user()->categories as $category)
+                            @if($category->idUsu == auth()->user()->idUsu)
+                                @if($category->notes()->find($note->idNot))
+                                    <a href="c/{{$category->idCat}}&{{$note->idNot}}" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
+                                @else
+                                @endif
+                            @endif
+                            @if(!$category->notes()->find($note->idNot))
+                            <a href="d/{{$category->idCat}}&{{$note->idNot}}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
+                            @endif
+                            @endforeach
+                        </div>
                         </div>
                     @endforeach
                     
                     @if($notes->isEmpty())
                         <p>No hay notas disponibles.</p>
                     @endif
-                    
                 </div>
             </div>
         </div>

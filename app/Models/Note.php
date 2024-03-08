@@ -26,8 +26,8 @@ class Note extends Model
 
     }
 
-    public function category():\App\Models\Category
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'idCat')->first();
+        return $this->belongsToMany(Category::class);
     }
 }

@@ -20,7 +20,6 @@ class NoteFactory extends Factory
     {
         return [
             'idUsu' => \App\Models\User::factory(),
-            'idCat' => \App\Models\Category::factory(),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'date' => $this->faker->date,

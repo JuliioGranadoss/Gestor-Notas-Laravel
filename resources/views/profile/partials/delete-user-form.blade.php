@@ -31,7 +31,7 @@
                     name="password"
                     type="password"
                     class="mt-1 block w-3/4" style="color: black;"
-                    placeholder="{{ __('Password') }}"
+                    placeholder="{{ __('Introduce tu contraseña') }}"
                 />
 
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />

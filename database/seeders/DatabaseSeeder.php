@@ -19,7 +19,11 @@ class DatabaseSeeder extends Seeder
             'idCat' => '1',
             'idUsu' => '1',
         ]);
-        \App\Models\Category::factory(5)->create();
-        \App\Models\Note::factory(10)->create();
+        $categories = \App\Models\Category::factory(5)->create();
+        
+        \App\Models\Note::factory(10)->create()
+        ->each(function ($note) use ($categories) {
+            $note->category()->attach($categories->random(1));
+        });
     }
 }

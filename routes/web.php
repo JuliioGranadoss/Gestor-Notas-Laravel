@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('c/{idCat}&{idNot}', [NoteController::class, 'detachCat'])->name('c/{idCat}&{idNot}');
+    Route::get('d/{idCat}&{idNot}', [NoteController::class, 'attachCat'])->name('d/{idCat}&{idNot}');
 });
 
 require __DIR__.'/auth.php';

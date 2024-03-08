@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id("idNot");
             $table->unsignedBigInteger('idUsu');
-            $table->unsignedBigInteger('idCat')->default(1);
             $table->string("title");
             $table->text("content");
             $table->date("date");
             $table->string("image")->nullable();
-            $table->foreign("idUsu")->references("idUsu")->on("users")->onDelete("cascade"); 
-            $table->foreign("idCat")->references("idCat")->on("category"); 
+            $table->foreign("idUsu")->references("idUsu")->on("users")->onDelete("cascade");  
             $table->timestamps();
         });
     }

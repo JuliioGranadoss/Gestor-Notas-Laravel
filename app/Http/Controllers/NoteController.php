@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Note;
 use Illuminate\Support\Carbon;
+use App\Models\Category;
 
 class NoteController extends Controller
 {
@@ -14,12 +15,8 @@ class NoteController extends Controller
 
         if ($user) {
             $notes = $user->notes;
-            
             return view('notesIndex', ["notes" => $notes]);
-            
-        } else {
-            return redirect()->route('login');
-        }
+        } 
     }
 
     public function show(string $id)
@@ -27,11 +24,6 @@ class NoteController extends Controller
         $note = Note::find($id);
 
         return view('notesShow', ["note" => $note ]);
-    }
-
-    public function create()
-    {
-        return view('notes.notesCreate');
     }
 
     public function store(Request $request)
@@ -50,14 +42,16 @@ class NoteController extends Controller
         $note->date = $date;
         $note->idUsu = auth()->id();
         $note->save();
+        $note->category()->attach(Category::find($request->idCat));
 
         return redirect()->route('notes.index');
     }
 
     public function edit(int $id)
     {
+        $categories = Category::all();
         $note = Note::find($id);
-        return view('notes.notesEdit', ["note" => $note]);
+        return view('notes.notesEdit', ["note" => $note, "categories" => $categories]);
     }
 
     public function update(Request $request, Note $note)
@@ -69,6 +63,7 @@ class NoteController extends Controller
 
         $note->title = $request->title;
         $note->content = $request->content;
+        $note->idCat = $request->idCat;
         $note->save();
 
         return redirect()->route('notes.index');
@@ -78,6 +73,27 @@ class NoteController extends Controller
     {
         $note->delete();
 
+        return redirect()->route('notes.index');
+    }
+
+    public function create()
+    {
+        $categories = Category::all(); 
+        return view('notes.notesCreate', ["categories" => $categories]);
+    }
+
+    public function attachCat(string $idCat, string $idNot){
+        $cat= Category::find($idCat);
+        $note= Note::find($idNot);
+        $note->category()->attach($cat);
+        return redirect()->route('notes.index');
+    }
+    
+    
+    public function detachCat(string $idCat, string $idNot){
+        $cat = Category::find($idCat);
+        $note = Note::find($idNot);
+        $note->category()->detach($cat);
         return redirect()->route('notes.index');
     }
 }
