@@ -18,14 +18,24 @@
                         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ $category->nameCat }}
                         </h2>
+                        
                         <div class="mt-2">
+                            <h3>Notas asociadas:</h3>
+                            <ul>
+                                @foreach($category->notes as $note)
+                                    <li>{{ $note->title }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-2">
                             <form action="{{ route('categories.destroy', $category->idCat) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class= "bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-4 rounded" onclick="return confirm('¿Estás seguro?')">Borrar</button>
                             </form>
                         </div>
-                    </div>
+                        <br>
                     @endforeach
 
                     @if($categories->isEmpty())
