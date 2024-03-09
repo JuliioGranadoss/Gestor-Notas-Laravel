@@ -1,48 +1,42 @@
 # Este proyecto está realizado por: Julio Granados Durán
 # NotaCraft
 
-NotaCraft es un gestor de notas desarrollado en Laravel 10. Esta aplicación web te permite crear, editar y organizar tus notas de manera eficiente.
+NotaCraft es una aplicación web diseñada para ayudarte a organizar y gestionar tus notas de manera eficiente. Con esta aplicación, puedes crear, ver, editar y eliminar notas, así como también administrar categorías asociadas a cada nota para una mejor organización y seguimiento.
 
-## Características
+## Características Principales
 
-- **Gestión de Notas**: Crea, edita y elimina tus notas de manera sencilla.
-- **Gestión de Categorías**: Crea y elimina categorías.
-- **Interfaz Intuitiva**: Diseño limpio y amigable para una experiencia de usuario óptima.
+- **Gestión de Notas**: La aplicación te permite crear nuevas notas con títulos descriptivos y contenido detallado. Cada nota tiene una fecha de creación automática para un seguimiento claro del tiempo.
 
-## Estructura de la Aplicación
+- **Categorización de Notas**: Puedes asignar una o más categorías a cada nota para clasificarlas según su contenido y temática. Esto te permite organizar tus notas de manera más eficiente y encontrarlas fácilmente cuando las necesites.
 
-La aplicación está estructurada en torno a tres entidades principales:
+- **Administración de Categorías**: Además de gestionar notas, puedes administrar las categorías existentes. Esto incluye la capacidad de crear nuevas categorías y eliminar las que ya no necesitas.
 
-1. **Usuarios**: La autenticación de usuarios permite a los usuarios registrarse, iniciar sesión y gestionar sus propias notas y categorías.
+## Tecnologías Utilizadas
 
-2. **Notas**: Los usuarios pueden crear, editar y eliminar notas. Cada nota tiene un título y un contenido.
+- **Laravel**: NotaCraft está desarrollado utilizando el framework de desarrollo de aplicaciones web Laravel. Laravel ofrece una estructura sólida y conveniente para el desarrollo de aplicaciones web modernas.
 
-3. **Categorías**:Los usuarios tienen la opción de crear y borrar categorías.
+- **Tailwind CSS**: Se utiliza Tailwind CSS como framework de CSS para diseñar interfaces de usuario atractivas y responsivas. Tailwind CSS permite diseñar de manera rápida y eficiente, lo que facilita la creación de una interfaz de usuario atractiva y funcional.
 
-## Instalación
+- **MySQL**: La aplicación utiliza MySQL como sistema de gestión de bases de datos relacional para almacenar y gestionar los datos de la aplicación. MySQL es una opción popular y confiable para el almacenamiento de datos en aplicaciones web.
 
-Sigue estos pasos para instalar y ejecutar NotaCraft en tu entorno local:
+## Uso
 
-1. Clona el repositorio desde GitHub:
+Para comenzar a utilizar el Gestor de Notas en Laravel, sigue estos pasos:
 
-git clone https://github.com/JuliioGranadoss/Gestor-Notas-Laravel
+1. **Clonar el Repositorio**: Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
-2. Instala las dependencias de PHP usando Composer:
+    ```
+    git clone <URL_del_repositorio>
+    ```
 
-composer install
+2. **Configurar la Base de Datos**: Copia el archivo `.env.example` a `.env` y configura las credenciales de tu base de datos MySQL.
 
-3. Copia el archivo `.env.example` y renómbralo como `.env`. Luego, configura tus variables de entorno, incluyendo la configuración de la base de datos.
+3. **Instalar Dependencias**: Ejecuta `composer install` para instalar las dependencias de Laravel.
 
-4. Genera una nueva clave de aplicación:
+4. **Generar Clave de Aplicación**: Ejecuta `php artisan key:generate` para generar una nueva clave de aplicación.
 
-php artisan key:generate
+5. **Ejecutar Migraciones**: Ejecuta `php artisan migrate` para crear las tablas necesarias en la base de datos.
 
-5. Ejecuta las migraciones para crear las tablas de la base de datos y los seeders para cargar datos de prueba:
+6. **Iniciar Servidor de Desarrollo**: Utiliza `php artisan serve` para iniciar el servidor de desarrollo de Laravel.
 
-php artisan migrate --seed
-
-6. Inicia el servidor de desarrollo:
-
-php artisan serve
-
-## En el repositorio, hay un video en el que se explica brevemente la aplicación.
+Una vez que la aplicación esté instalada y ejecutándose, podrás acceder a ella desde tu navegador web. Inicia sesión, y podrás empezar a crear, editar y gestionar tus notas de manera eficiente.
