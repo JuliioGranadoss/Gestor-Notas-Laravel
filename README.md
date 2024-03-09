@@ -26,7 +26,7 @@ Para comenzar a utilizar el Gestor de Notas en Laravel, sigue estos pasos:
 1. **Clonar el Repositorio**: Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
     ```
-    git clone https://github.com/JuliioGranadoss/Gestor-Notas-Laravel
+    git clone https://github.com/JuliioGranadoss/Gestor-Notas-Laravel.git
     ```
 
 2. **Configurar la Base de Datos**: Copia el archivo `.env.example` a `.env` y configura las credenciales de tu base de datos MySQL.
