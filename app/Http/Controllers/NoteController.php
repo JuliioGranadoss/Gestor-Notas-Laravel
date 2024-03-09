@@ -63,7 +63,6 @@ class NoteController extends Controller
 
         $note->title = $request->title;
         $note->content = $request->content;
-        $note->idCat = $request->idCat;
         $note->save();
 
         return redirect()->route('notes.index');
