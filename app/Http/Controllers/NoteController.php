@@ -88,7 +88,6 @@ class NoteController extends Controller
         return redirect()->route('notes.index');
     }
     
-    
     public function detachCat(string $idCat, string $idNot){
         $cat = Category::find($idCat);
         $note = Note::find($idNot);

@@ -20,13 +20,12 @@
                             </p>
                             <p>
                                 Categoría: 
-                                @php
-                                    $categories = [];
-                                    foreach($note->category as $categoria) {
-                                        $categories[] = $categoria->nameCat;
-                                    }
-                                    echo implode(', ', $categories);
-                                @endphp
+                                @foreach($note->category as $category)
+                                    {{ $category->nameCat }}
+                                    @if(!$loop->last)
+                                        ,
+                                    @endif
+                                @endforeach
                             </p>
                             <p>
                                 Fecha de creación: {{ $note->created_at->format('d-m-Y H:i:s') }}
@@ -42,13 +41,12 @@
                             <div>
                                 @foreach(auth()->user()->categories as $category)
                                     @if($category->idUsu == auth()->user()->idUsu)
-                                        @if($category->notes()->find($note->idNot))
-                                            <a href="c/{{$category->idCat}}&{{$note->idNot}}" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
-                                        @else
+                                        @if($note->notasenCategoria($category->idCat))
+                                        <a href="{{ route('quitar', ['idCat' => $category->idCat, 'idNot' => $note->idNot]) }}" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
                                         @endif
                                     @endif
                                     @if(!$category->notes()->find($note->idNot))
-                                        <a href="d/{{$category->idCat}}&{{$note->idNot}}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
+                                        <a href="{{ route('añadir', ['idCat' => $category->idCat, 'idNot' => $note->idNot]) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
                                     @endif
                                 @endforeach
                             </div>

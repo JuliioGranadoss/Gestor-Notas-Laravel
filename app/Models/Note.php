@@ -30,4 +30,14 @@ class Note extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function notasenCategoria(string $idCat)
+{
+    $category = Category::find($idCat);
+    if ($category) {
+        return $category->notes()->where('idNot', $this->idNot)->exists();
+    }
+    return false;
+}
+
 }
