@@ -39,13 +39,10 @@
                             </form>
                             <br><br>
                             <div>
-                                @foreach(auth()->user()->categories as $category)
-                                    @if($category->idUsu == auth()->user()->idUsu)
-                                        @if($note->notasenCategoria($category->idCat))
+                                @foreach($categories as $category)
+                                    @if($note->notasenCategoria($category->idCat))
                                         <a href="{{ route('quitar', ['idCat' => $category->idCat, 'idNot' => $note->idNot]) }}" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
-                                        @endif
-                                    @endif
-                                    @if(!$category->notes()->find($note->idNot))
+                                    @else
                                         <a href="{{ route('añadir', ['idCat' => $category->idCat, 'idNot' => $note->idNot]) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 px-4 rounded">{{ $category->nameCat }}</a>
                                     @endif
                                 @endforeach

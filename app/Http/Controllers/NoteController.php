@@ -10,14 +10,20 @@ use App\Models\Category;
 class NoteController extends Controller
 {
     public function index()
-    {
-        $user = auth()->user();
+{
+    $user = auth()->user();
 
-        if ($user) {
-            $notes = $user->notes;
-            return view('notesIndex', ["notes" => $notes]);
-        } 
-    }
+    if ($user) {
+        // Obtener las notas del usuario
+        $notes = $user->notes;
+
+        // Obtener las categorías relevantes del usuario
+        $categories = Category::where('idUsu', $user->idUsu)->get();
+
+        // Pasar las notas y las categorías relevantes a la vista
+        return view('notesIndex', compact('notes', 'categories'));
+    } 
+}
 
     public function show(string $id)
     {

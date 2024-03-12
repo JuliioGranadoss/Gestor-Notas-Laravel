@@ -31,13 +31,15 @@ class Note extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function notasenCategoria(string $idCat)
-{
-    $category = Category::find($idCat);
-    if ($category) {
-        return $category->notes()->where('idNot', $this->idNot)->exists();
-    }
-    return false;
-}
-
+    public function notasenCategoria(string $idCat){
+        // Busca el ID de la categoía
+        $category = Category::find($idCat);
+        // Comprueba si se ha encontrado la categoría
+        if ($category) {
+            // Comprueba si la nota está en la categoría
+            return $category->notes()->where('idNot', $this->idNot)->exists();
+        }
+        // Si no se ha encontrado la categoría, devuelve false
+        return false;
+        }
 }
